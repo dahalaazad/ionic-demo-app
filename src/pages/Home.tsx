@@ -23,6 +23,10 @@ const Home: React.FC = () => {
         <Link to="/details">
           <IonButton fill="solid">See further details</IonButton>
         </Link>
+
+        <Link to="/add-inspiration">
+          <IonButton fill="solid">Add Inspiration </IonButton>
+        </Link>
       </IonContent>
     </IonPage>
   );

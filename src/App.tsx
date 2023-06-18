@@ -23,6 +23,7 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 import DetailPage from "./pages/DetailPage";
+import AddInspiration from "./pages/AddInspiration";
 
 setupIonicReact();
 
@@ -35,6 +36,7 @@ const App: React.FC = () => (
         <Route path="/home" component={Home} />
 
         <Route path="/details" component={DetailPage} />
+        <Route path="/add-inspiration" component={AddInspiration} />
 
         <Route exact path="/">
           <Redirect to="/home" />
