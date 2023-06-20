@@ -1,8 +1,18 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import inspirationReducer from "./inspirationSlice";
-inspirationReducer
+import { persistReducer, persistStore } from "redux-persist";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const persistConfig = {
+  key: "root",
+  storage: AsyncStorage,
+  whitelist: ["inspirationList", "currentInspiration"],
+};
+
+const persistedReducer = persistReducer(persistConfig, inspirationReducer);
+
 const rootReducer = combineReducers({
-  inspiration: inspirationReducer,
+  inspiration: persistedReducer,
 });
 
 export const store = configureStore({
@@ -12,3 +22,5 @@ export const store = configureStore({
       serializableCheck: false,
     }),
 });
+
+export const persistor = persistStore(store);
