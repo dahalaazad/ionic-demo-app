@@ -11,7 +11,9 @@ import {
 } from "@ionic/react";
 import React from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import Input, { InputProps } from "../components/Input";
+import { ISetInspirationProp } from "../App";
+import { useDispatch, useSelector } from "react-redux";
+import { setInspiration } from "../redux/inspirationSlice";
 
 interface IFormInput {
   title: String;
@@ -19,6 +21,8 @@ interface IFormInput {
 }
 
 const AddInspiration: React.FC = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     reset,
@@ -29,6 +33,7 @@ const AddInspiration: React.FC = () => {
   const registerUser: SubmitHandler<IFormInput> = (data) => {
     console.log("creating a new user account with: ", data);
     reset({ title: "", description: "" });
+    dispatch(setInspiration(data));
   };
   return (
     <IonPage>
@@ -47,9 +52,7 @@ const AddInspiration: React.FC = () => {
               label="Title"
               labelPlacement="stacked"
             />
-            {errors.title && (
-              <p role="alert">Title cannot be empty</p>
-            )}
+            {errors.title && <p role="alert">Title cannot be empty</p>}
             <IonTextarea
               {...register("description")}
               label="Description"

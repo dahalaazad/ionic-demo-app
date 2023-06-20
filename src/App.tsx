@@ -24,26 +24,39 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import DetailPage from "./pages/DetailPage";
 import AddInspiration from "./pages/AddInspiration";
-
+import { useState } from "react";
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <Switch>
-        <Route path="/login" component={LoginGoogle} />
+export interface IList {
+  title: string;
+  description: string;
+}
 
-        <Route path="/home" component={Home} />
+export interface ISetInspirationProp {
+  inspirationList: IList[];
+  setInspirationList: React.Dispatch<React.SetStateAction<IList[]>>;
+}
 
-        <Route path="/details" component={DetailPage} />
-        <Route path="/add-inspiration" component={AddInspiration} />
+const App: React.FC = () => {
+  const [inspirationList, setInspirationList] = useState<IList[]>([]);
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <Switch>
+          <Route path="/login" render={() => <LoginGoogle />} />
 
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </Switch>
-    </IonReactRouter>
-  </IonApp>
-);
+          <Route path="/home" render={() => <Home />} />
+
+          <Route path="/details" render={() => <DetailPage />} />
+          <Route path="/add-inspiration" render={() => <AddInspiration />} />
+
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
+        </Switch>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;
