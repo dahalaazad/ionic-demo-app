@@ -19,13 +19,20 @@
     "@capacitor/status-bar": "5.0.4",
     "@ionic/react": "^7.0.0",
     "@ionic/react-router": "^7.0.0",
+    "@ionic/storage": "^4.0.0",
+    "@react-native-async-storage/async-storage": "^1.18.2",
+    "@reduxjs/toolkit": "^1.9.5",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
     "ionicons": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hook-form": "^7.44.3",
+    "react-redux": "^8.1.0",
     "react-router": "^5.3.4",
-    "react-router-dom": "^5.3.4"
+    "react-router-dom": "^5.3.4",
+    "redux-persist": "^6.0.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@capacitor/cli": "5.0.5",
