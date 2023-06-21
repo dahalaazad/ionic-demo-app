@@ -14,6 +14,7 @@ import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { ISetInspirationProp } from "../App";
 import { useDispatch, useSelector } from "react-redux";
 import { setInspiration } from "../redux/inspirationSlice";
+import { usePhotoGallery } from "../hooks/photoGallery";
 
 interface IFormInput {
   title: String;
@@ -22,6 +23,8 @@ interface IFormInput {
 
 const AddInspiration: React.FC = () => {
   const dispatch = useDispatch();
+
+  const { takePhoto } = usePhotoGallery();
 
   const {
     register,
@@ -65,6 +68,7 @@ const AddInspiration: React.FC = () => {
           </form>
         </div>
       </IonContent>
+      <IonButton onClick={takePhoto}>Open Camera</IonButton>
     </IonPage>
   );
 };
